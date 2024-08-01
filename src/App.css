@@ -1,0 +1,9 @@
+.blur-background {
+    filter: blur(4px);
+    transition: filter 0.8s ease;
+  }
+  
+  .blur-background.modal-open {
+    filter: none;
+  }
+  

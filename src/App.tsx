@@ -8,11 +8,14 @@ type Type = {
   titleObj: string;
   descriptionObj: string;
 };
+
 function App() {
   const [tasks, setTask] = useState<Type[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [edited, setEdited] = useState(-1);
   const [date, setDate] = useState("No Deadline");
+  const [blur, setBlur] = useState(false);
+
   const handleSubmit = (title: string, description: string, date: string) => {
     const myTodo: Type = {
       id: tasks.length + 1,
@@ -28,6 +31,7 @@ function App() {
     const index = tasks.findIndex((item) => item.id === id);
     setShowModal(true);
     setEdited(index);
+    setBlur(true);
   };
 
   const updateItem = (id: number, newTitle: string, newDescription: string) => {
@@ -39,6 +43,7 @@ function App() {
       )
     );
     setShowModal(false);
+    setBlur(false);
   };
 
   // Delete Handling
@@ -46,12 +51,13 @@ function App() {
     const filtered = tasks.filter((item) => item.id !== id);
     setTask(filtered);
   };
+
   return (
     <>
-      <div className="container text-center my-4">
+      <div className={`container ${blur ? 'blur-background text-center my-4' : 'text-center my-4'}`}>
         <Banner />
       </div>
-      <div className="container">
+      <div className={`container ${blur ? 'blur-background' : ''}`}>
         <div className="row">
           <div className="col-md-6">
             <InputView onSubmit={handleSubmit} />

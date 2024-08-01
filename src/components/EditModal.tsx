@@ -21,7 +21,10 @@ function EditModal({ edit, editItem }: Props) {
         <div className="modal d-block" tabIndex={-1}>
           <div className="modal-dialog">
             <div className="modal-content">
-              <div className="modal-header">
+              <div
+                className="modal-header"
+                style={{ backgroundColor: "#fdbb2d" }}
+              >
                 <input
                   type="text"
                   className="form-control"
@@ -29,6 +32,7 @@ function EditModal({ edit, editItem }: Props) {
                   aria-label="Modal title"
                   value={titleState}
                   onChange={(e) => setTitleState(e.target.value)}
+                  style={{ borderColor: "#fdbb2d" }}
                 />
                 <button
                   type="button"
@@ -49,6 +53,7 @@ function EditModal({ edit, editItem }: Props) {
                   rows={4}
                   value={descriptionState}
                   onChange={(e) => setDescriptionState(e.target.value)}
+                  style={{ borderColor: "#fdbb2d" }}
                 ></textarea>
               </div>
               <div className="modal-footer">
@@ -60,6 +65,7 @@ function EditModal({ edit, editItem }: Props) {
                     setShow(false);
                     editItem(edit.id, edit.titleObj, edit.descriptionObj);
                   }}
+                  style={{ backgroundColor: "#fdbb2d", borderColor: "#fdbb2d" }}
                 >
                   Close
                 </button>
@@ -71,6 +77,7 @@ function EditModal({ edit, editItem }: Props) {
                     editItem(edit.id, titleState, descriptionState);
                     setShow(false);
                   }}
+                  style={{ backgroundColor: "#fdbb2d", borderColor: "#fdbb2d" }}
                 >
                   Save changes
                 </button>
